@@ -2,16 +2,20 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { MdOutlineDashboardCustomize } from "react-icons/md"
 import { LuMoonStar } from "react-icons/lu"
+import { FiSun } from "react-icons/fi"
 import logo from '../../assets/logo.png'
-
+import useTheme from "../../hooks/useTheme"
 const Navbar = () => {
     const [dropdown, setDropdown] = useState(true);
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
+    const { handleModeChnage, mode } = useTheme()
+
+
     return (
         <div>
-
+            <div className="h-[1px] w-full bg-slate-300 dark:bg-slate-400"></div>
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
-                <div className="max-w-screen-xl flex flex-wrap relative items-center justify-between mx-auto p-4">
+                <div className=" flex flex-wrap relative items-center justify-between mx-auto py-4">
                     <Link href="https://flowbite.com/" className="flex items-center">
                         <img src={logo} className="h-8 mr-1" alt="logo" />
                         <span className="self-center lg:text-2xl text-sm sm:text-lg font-semibold whitespace-nowrap dark:text-white">CareerNest</span>
@@ -21,7 +25,9 @@ const Navbar = () => {
                             <MdOutlineDashboardCustomize className="mr-1 " />
                             Dashboard
                         </button>
-                        <LuMoonStar size={22} className="cursor-pointer mr-2 lg:mr-0" />
+                        {
+                            mode === "light" ? <LuMoonStar onClick={handleModeChnage} size={22} className="cursor-pointer mr-2 lg:mr-0 dark:text-white" /> : <FiSun onClick={handleModeChnage} size={22} className="cursor-pointer mr-2 lg:mr-0 dark:text-white" />
+                        }
 
                         <div className={dropdown ? "z-50   lg:mt-8 mt-9 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" : "z-50  absolute top-10 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow lg:mt-8 mt-9 dark:bg-gray-700"} id="language-dropdown-menu">
                             <ul className="py-2 font-medium" role="none">
