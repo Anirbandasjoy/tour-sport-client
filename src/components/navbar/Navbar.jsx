@@ -32,10 +32,10 @@ const Navbar = () => {
                         <div className={dropdown ? "z-50   lg:mt-8 mt-9 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" : "z-50  absolute top-10 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow lg:mt-8 mt-9 dark:bg-gray-700"} id="language-dropdown-menu">
                             <ul className="py-2 font-medium" role="none">
                                 <li>
-                                    <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                                    <Link to="/add-service" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
                                         <div className="inline-flex items-center">
 
-                                            English (US)
+                                            Add Service
                                         </div>
                                     </Link>
                                 </li>

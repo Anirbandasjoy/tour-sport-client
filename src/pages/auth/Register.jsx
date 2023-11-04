@@ -38,7 +38,9 @@ const Register = () => {
                 .then((userCredetial) => {
                     updateProfile(userCredetial.user, {
                         displayName: name,
-                        photoURL: image
+                        photoURL: image,
+                        location: "location",
+                        shortDescription: "shortDescription",
                     })
                         .then(() => {
                             console.log("updated profile")
@@ -77,7 +79,7 @@ const Register = () => {
             <div className='flex  justify-center h-screen items-center  px-4 md:px-0'>
                 <div className="w-full max-w-lg  p-4  rounded-md  sm:p-6 md:p-8 ">
                     <form className="space-y-4 " onSubmit={formik.handleSubmit}>
-                        <h5 className="text-xl font-medium text-gray-900  text-center">Sign Up </h5>
+                        <h5 className="text-xl font-medium text-gray-900  text-center dark:text-white">Sign Up </h5>
                         <p className='text-center text-sm text-red-600'>
                             {
                                 setRegisterError && registerError
@@ -118,7 +120,7 @@ const Register = () => {
                                 <div className="flex items-center h-5">
                                     <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " required />
                                 </div>
-                                <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900 ">Remember me</label>
+                                <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-white">Remember me</label>
                             </div>
 
                         </div>

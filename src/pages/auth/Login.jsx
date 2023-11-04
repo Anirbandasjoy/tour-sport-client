@@ -4,7 +4,6 @@ import { Link, useNavigate, } from 'react-router-dom'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import * as yup from 'yup';
 import { AuthContext } from '../../context/AuthProvider';
-
 const Login = () => {
     const [showPassword, setShowPassword] = useState(true);
     const [loginError, setLoginError] = useState("");
@@ -22,11 +21,8 @@ const Login = () => {
                 "Password at least 6 char and one uppercase one spacial char"
             ).required()
         }),
-
         onSubmit: (values) => {
-
             const { email, password } = values;
-
             loginUser(email, password)
                 .then((userCredential) => {
                     console.log(userCredential.user);
@@ -54,11 +50,11 @@ const Login = () => {
     }
 
     return (
-        <div className='max-w-6xl  mx-auto bg-base-300'>
+        <div className='max-w-6xl  mx-auto bg-base-300 dark:bg-gray-900 dark:text-white'>
             <div className='flex h-screen items-center  justify-center px-4 md:px-0'>
                 <div className="w-full max-w-lg p-4   rounded-md  sm:p-6 md:p-8 ">
                     <form className="space-y-6 " onSubmit={formik.handleSubmit}>
-                        <h5 className="text-xl font-medium text-gray-900  text-center">Sign In </h5>
+                        <h5 className="text-xl font-medium text-gray-900 dark:text-white text-center">Sign In </h5>
                         <p className='text-center text-sm text-red-600'>
                             {
                                 setLoginError && loginError
@@ -66,16 +62,15 @@ const Login = () => {
                         </p>
 
                         <div>
-                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
+                            <label htmlFor="email" className="block mb-2 dark:text-white text-sm font-medium text-gray-900 ">Your email</label>
                             <input type="text" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="your email" onChange={formik.handleChange} value={formik.values.email} />
-
 
                             <span className="text-red-600 text-xs">{formik.touched.email ? formik.errors.email : ""}</span>
 
 
                         </div>
                         <div>
-                            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 ">Your password</label>
+                            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900  dark:text-white">Your password</label>
                             <div className='relative'>
                                 <input type={showPassword ? "password" : "text"} name="password" id="password" placeholder="your password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " onChange={formik.handleChange} value={formik.values.password} />
                                 <span onClick={() => setShowPassword(!showPassword)}>
@@ -91,7 +86,7 @@ const Login = () => {
                                 <div className="flex items-center h-5">
                                     <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " required />
                                 </div>
-                                <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900 ">Remember me</label>
+                                <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-white ">Remember me</label>
                             </div>
 
                         </div>
