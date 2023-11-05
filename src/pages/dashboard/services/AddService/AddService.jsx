@@ -16,7 +16,8 @@ const AddService = () => {
         const serviceImage = form.imageUrl.value;
         const serviceArea = form.serviceArea.value;
         const serviceDsc = form.serviceDescription.value;
-        const serviceData = { serviceProviderName, serviceProviderEmail, serviceProviderLocation, serviceProviderShortDsc, serviceName, servicePrice, serviceImage, serviceArea, serviceDsc }
+        const serviceProviderImage = form.serviceProviderImage.value;
+        const serviceData = { serviceProviderName, serviceProviderEmail, serviceProviderLocation, serviceProviderShortDsc, serviceName, servicePrice, serviceImage, serviceArea, serviceDsc, serviceProviderImage }
         console.log(serviceData)
         try {
             const response = await axios.post("http://localhost:5000/api/v1/service", serviceData);
@@ -49,6 +50,7 @@ const AddService = () => {
                         <label htmlFor="location" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
                         <input type="text" id="location" name="location" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Location" required />
                     </div>
+
                     <div>
                         <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Short dsc</label>
                         <input type="text" id="userdsc" name="userdsc" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="User Short dsc" required />
@@ -65,6 +67,10 @@ const AddService = () => {
                 <div className="mb-6">
                     <label htmlFor="imageUrl" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Image URL</label>
                     <input type="url" id="imageUrl" name="imageUrl" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Service Image URL" required />
+                </div>
+                <div className="mb-6">
+                    <label htmlFor="serviceProviderImage" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Provider Image</label>
+                    <input type="url" id="serviceProviderImage" name="serviceProviderImage" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Service Provider Image" required defaultValue={user && user?.photoURL} readOnly />
                 </div>
                 <div className="mb-6">
                     <label htmlFor="serviceArea" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Area</label>
