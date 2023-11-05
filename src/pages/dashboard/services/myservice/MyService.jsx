@@ -1,7 +1,24 @@
+import axios from "axios";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-const MyService = ({ service }) => {
-    const { serviceImage, serviceName, servicePrice, serviceProviderImage, serviceProviderName, _id } = service || {}
+const MyService = ({ service, setData, data }) => {
+    const { serviceImage, serviceName, servicePrice, serviceProviderImage, serviceProviderName, _id } = service || {};
+    const services = data;
+    console.log(service)
+
+    const handleDelete = async (id, setData) => {
+        try {
+            const res = await axios.delete(`http://localhost:5000/api/v1/service/${id}`)
+            if (res.status === 200) {
+                const remainig = services.filter((service) => service._id !== id);
+                setData(remainig)
+                alert("Deleted Successfully")
+                console.log(res.data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <div className="details">
             <div className="flex flex-col  cursor-pointer  bg-white border border-gray-200 rounded-lg shadow md:flex-row  hover:bg-gray-100 relative dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -31,6 +48,7 @@ const MyService = ({ service }) => {
                             Update
                         </Link>
                         <Link
+                            onClick={() => handleDelete(_id, setData)}
                             className="text-white rounded-md    bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm px-5 py-2.5 text-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             Delete
@@ -44,7 +62,9 @@ const MyService = ({ service }) => {
 }
 
 MyService.propTypes = {
-    service: PropTypes.object.isRequired
+    service: PropTypes.object.isRequired,
+    data: PropTypes.array.isRequired,
+    setData: PropTypes.func.isRequired
 }
 
 export default MyService;

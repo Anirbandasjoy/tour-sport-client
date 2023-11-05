@@ -7,7 +7,7 @@ const MyServices = () => {
     const url = user?.email
         ? `http://localhost:5000/api/v1/my-services?email=${user.email}`
         : null;
-    const { data } = useFetch(url);
+    const { data, setData } = useFetch(url);
     console.log(data)
     return (
         <div className="max-w-7xl mx-auto pb-10">
@@ -17,7 +17,7 @@ const MyServices = () => {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {
-                    data.map(service => <MyService key={service._id} service={service} />)
+                    data.map(service => <MyService key={service._id} service={service} data={data} setData={setData} />)
                 }
             </div>
 
