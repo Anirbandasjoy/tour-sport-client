@@ -9,6 +9,7 @@ const Login = () => {
     const [loginError, setLoginError] = useState("");
     const { loginUser, googleLoginUser } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = localStorage.getItem("location")
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -27,7 +28,7 @@ const Login = () => {
                 .then((userCredential) => {
                     console.log(userCredential.user);
                     alert("Logged in Successfully!")
-                    navigate("/")
+                    navigate(location ? location : "/")
                 })
                 .catch((err) => {
                     setLoginError("Email or Password dose not matches", err)
@@ -42,7 +43,7 @@ const Login = () => {
         googleLoginUser()
             .then(() => {
                 alert("Logged In Successfully")
-                navigate("/")
+                navigate(location ? location : "/")
             })
             .catch((err) => [
                 console.log(err.message)

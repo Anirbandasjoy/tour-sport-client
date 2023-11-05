@@ -11,6 +11,7 @@ const Register = () => {
     const navigate = useNavigate();
 
     const { registerUser, googleLoginUser } = useContext(AuthContext)
+    const location = localStorage.getItem("location")
 
     const formik = useFormik({
         initialValues: {
@@ -49,7 +50,7 @@ const Register = () => {
 
                     console.log(userCredetial.user)
                     alert("Your Registation Successfully!")
-                    navigate("/")
+                    navigate(location ? location : "/")
 
                 })
                 .catch((err) => {
@@ -66,7 +67,7 @@ const Register = () => {
         googleLoginUser()
             .then(() => {
                 alert("Logged in Successfully!")
-                navigate("/")
+                navigate(location ? location : "/")
             })
             .catch((err) => [
                 console.log(err.message)

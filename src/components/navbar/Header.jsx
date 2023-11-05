@@ -14,8 +14,9 @@ const Header = () => {
     const hanleLogOut = () => {
         logOut()
             .then(() => {
-                navigate("/login")
                 alert("Logged Out Successfully")
+                localStorage.removeItem("location")
+                navigate("/login")
 
             })
             .catch((err) => {
