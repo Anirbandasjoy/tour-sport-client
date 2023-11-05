@@ -1,11 +1,9 @@
 import axios from "axios";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-const MyService = ({ service, setData, data }) => {
+const ManageService = ({ service, setData, data }) => {
     const { serviceImage, serviceName, servicePrice, serviceProviderImage, serviceProviderName, _id } = service || {};
     const services = data;
-    console.log(service)
-
     const handleDelete = async (id, setData) => {
         try {
             const res = await axios.delete(`http://localhost:5000/api/v1/service/${id}`)
@@ -43,6 +41,7 @@ const MyService = ({ service, setData, data }) => {
                             Details
                         </Link>
                         <Link
+                            to={`/update-service/${_id}`}
                             className="text-white rounded-md    bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm px-5 py-2.5 text-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             Update
@@ -61,10 +60,10 @@ const MyService = ({ service, setData, data }) => {
     )
 }
 
-MyService.propTypes = {
+ManageService.propTypes = {
     service: PropTypes.object.isRequired,
     data: PropTypes.array.isRequired,
     setData: PropTypes.func.isRequired
 }
 
-export default MyService;
+export default ManageService;

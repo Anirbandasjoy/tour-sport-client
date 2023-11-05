@@ -1,16 +1,19 @@
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import Service from "../home/allServices/Service"
+import Loading from "../../components/Loading/Loading";
 const AllService = () => {
     const [search, setSearch] = useState("");
     const url = `http://localhost:5000/api/v1/services?search=${search}`
-    const { data } = useFetch(url);
+    const { data, loading } = useFetch(url);
+    if (loading) {
+        return <Loading />
+    }
     return (
         <div>
             <div className="bg-blue-100 dark:bg-blue-200   h-36 w-full flex justify-center items-center">
                 <h1 className="lg:text-4xl text-2xl text-blue-400 dark:text-blue-600 font-bold">All Services</h1>
             </div>
-
             <div className="max-w-6xl mx-auto pb-10">
                 <div className="lg:my-24 my-14 text-center space-y-6 ">
                     <h4 className="text-[#808080] lg:text-[1rem] text-xs sm:text-sm  uppercase font-bold ">MODERN & BEAUTIFUL</h4>
@@ -56,6 +59,8 @@ const AllService = () => {
                     }
                 </div>
             </div>
+
+
         </div>
     )
 }

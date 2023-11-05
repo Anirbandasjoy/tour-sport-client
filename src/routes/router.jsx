@@ -7,12 +7,15 @@ import AddService from "../pages/dashboard/services/AddService/AddService";
 import axios from "axios";
 import ServiceDetails from "../pages/home/allServices/ServiceDetails";
 import AllService from "../pages/allServices/AllService";
-import MyServices from "../pages/dashboard/services/myservice/MyServices";
 import PribetRoutes from "./PribetRoutes";
+import ManageServices from "../pages/manageService/ManageServices";
+import UpdateService from "../pages/manageService/UpdateService";
+import ErrorPage from "../pages/error/ErrorPage";
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -30,12 +33,17 @@ export const router = createBrowserRouter([
             },
             {
                 path: "all-services",
-                element: <PribetRoutes><AllService /></PribetRoutes>,
+                element: <AllService />
             },
             {
-                path: "my-services",
-                element: <PribetRoutes><MyServices /></PribetRoutes>
+                path: "manage-services",
+                element: <PribetRoutes><ManageServices /></PribetRoutes>
             },
+            {
+                path: "update-service/:id",
+                element: <PribetRoutes><UpdateService /></PribetRoutes>,
+                loader: ({ params }) => axios.get(`http://localhost:5000/api/v1/service/${params.id}`)
+            }
 
         ]
     },
