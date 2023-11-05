@@ -25,7 +25,7 @@ const UpdateService = () => {
             if (response.status === 200) {
                 alert("Updated Successfully")
                 console.log(response.data)
-                navigate("/my-services")
+                navigate("/manage-services")
             }
         } catch (error) {
             console.log(error)

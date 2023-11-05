@@ -4,7 +4,6 @@ const Service = ({ service }) => {
     const { serviceImage, serviceName, servicePrice, serviceProviderImage, serviceProviderName, _id } = service || {}
     return (
         <div className="details">
-
             <div className="flex flex-col  cursor-pointer  bg-white border border-gray-200 rounded-lg shadow md:flex-row  hover:bg-gray-100 relative dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                 <img className="object-cover w-full rounded-t-lg h-full md:h-auto md:w-60 md:rounded-none md:rounded-l-lg" src={serviceImage} />
                 <div className=" overlay w-full hidden sm:block md:w-60 rounded-t-lg h-96  object-cover  md:h-full absolute ">
