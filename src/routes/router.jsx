@@ -11,6 +11,7 @@ import PribetRoutes from "./PribetRoutes";
 import ManageServices from "../pages/manageService/ManageServices";
 import UpdateService from "../pages/manageService/UpdateService";
 import ErrorPage from "../pages/error/ErrorPage";
+import MyServices from "../pages/dashboard/services/myservice/MyServices";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -43,16 +44,21 @@ export const router = createBrowserRouter([
                 path: "update-service/:id",
                 element: <PribetRoutes><UpdateService /></PribetRoutes>,
                 loader: ({ params }) => axios.get(`http://localhost:5000/api/v1/service/${params.id}`)
+            },
+            {
+                path: "/login",
+                element: <Login />
+            },
+            {
+                path: "register",
+                element: <Register />
+            },
+            {
+                path: "my-services",
+                element: <MyServices />
             }
 
         ]
     },
-    {
-        path: "/login",
-        element: <Login />
-    },
-    {
-        path: "register",
-        element: <Register />
-    }
+
 ])

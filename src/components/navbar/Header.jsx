@@ -1,6 +1,5 @@
-import { AiFillTwitterCircle, AiFillLinkedin, AiOutlineInstagram, AiOutlineClockCircle } from 'react-icons/ai'
-import { BsFacebook, BsTelephoneForward } from 'react-icons/bs'
-import { HiOutlineMail } from 'react-icons/hi'
+import { AiFillTwitterCircle, AiFillLinkedin, AiOutlineInstagram } from 'react-icons/ai'
+import { BsFacebook } from 'react-icons/bs'
 import { CgProfile } from 'react-icons/cg'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from "../../context/AuthProvider"
@@ -27,18 +26,7 @@ const Header = () => {
         <div className='flex flex-col md:flex-row justify-between items-center py-3 ' data-aos="zoom-in">
 
             <div className='flex dark:text-white  flex-col md:flex-row mb-6 md:mb-0 text-xs items-center  gap-5 list-none'>
-                <div className='flex items-center gap-2'>
-                    <BsTelephoneForward />
-                    <li>(+088) 01772838734</li>
-                </div>
-                <div className='flex items-center gap-2'>
-                    <HiOutlineMail />
-                    <li>adj@gmail.com</li>
-                </div>
-                <div className='flex items-center gap-2'>
-                    <AiOutlineClockCircle />
-                    <li> Sut – Fri 9.00 am – 6.00 pm</li>
-                </div>
+
                 {
                     user && <div className='flex items-center gap-2'>
                         <CgProfile />

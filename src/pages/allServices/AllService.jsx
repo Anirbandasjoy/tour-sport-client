@@ -6,9 +6,6 @@ const AllService = () => {
     const [search, setSearch] = useState("");
     const url = `http://localhost:5000/api/v1/services?search=${search}`
     const { data, loading } = useFetch(url);
-    if (loading) {
-        return <Loading />
-    }
     return (
         <div>
             <div className="bg-blue-100 dark:bg-blue-200   h-36 w-full flex justify-center items-center">
@@ -53,11 +50,13 @@ const AllService = () => {
                     </div>
 
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                    {
-                        data.map(service => <Service key={service._id} service={service} />)
-                    }
-                </div>
+                {
+                    loading ? <Loading /> : <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        {
+                            data.map(service => <Service key={service._id} service={service} />)
+                        }
+                    </div>
+                }
             </div>
 
 
