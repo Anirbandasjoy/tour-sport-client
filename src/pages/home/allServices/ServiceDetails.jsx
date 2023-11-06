@@ -23,10 +23,11 @@ const ServiceDetails = () => {
         const serviceProviderEmail = form.serviceProviderEmail.value;
         const buyerEmail = form.yourEmail.value;
         const serviceImage = form.serviceImageUrl.value;
+        const serviceName = form.serviceName.value;
         const servicePrice = form.servicePrice.value;
         const serviceTakingDate = form.serviceTakingDate.value;
         const message = form.message.value;
-        const bookingData = { serviceProviderEmail, buyerEmail, serviceImage, servicePrice, serviceTakingDate, message }
+        const bookingData = { serviceProviderEmail, buyerEmail, serviceName, serviceImage, servicePrice, serviceTakingDate, message }
         try {
             const res = await axios.post("http://localhost:5000/api/v1/booking", bookingData)
             if (res.status === 201) {
@@ -113,6 +114,10 @@ const ServiceDetails = () => {
                                     <div>
                                         <label htmlFor="yourEmail" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
                                         <input type="email" name="yourEmail" id="yourEmail" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required defaultValue={user && user?.email} readOnly />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="serviceName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Name</label>
+                                        <input type="text" name="serviceName" id="serviceName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required defaultValue={serviceName} readOnly />
                                     </div>
                                     <div>
                                         <label htmlFor="serviceImage" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Image Url</label>

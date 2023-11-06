@@ -1,6 +1,10 @@
+import Booking from "./Booking"
+
 const MyShedule = () => {
     return (
-        <div>MyShedule</div>
+        <div>
+            <Booking />
+        </div>
     )
 }
 
