@@ -35,7 +35,7 @@ const Booking = () => {
             </div>
             {
                 data.length ? <div>
-                    <h1 className="dark:text-gray-200 text-2xl lg:text-4xl text-center py-14 text-gray-500">Your Booking </h1>
+                    <h1 className="dark:text-gray-500 font-bold text-2xl lg:text-4xl text-center py-14 text-gray-500">Your Booking </h1>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full lg:w-3/4 mx-auto text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

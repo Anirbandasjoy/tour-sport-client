@@ -27,7 +27,8 @@ const ServiceDetails = () => {
         const servicePrice = form.servicePrice.value;
         const serviceTakingDate = form.serviceTakingDate.value;
         const message = form.message.value;
-        const bookingData = { serviceProviderEmail, buyerEmail, serviceName, serviceImage, servicePrice, serviceTakingDate, message }
+        const status = "Pending"
+        const bookingData = { serviceProviderEmail, buyerEmail, serviceName, serviceImage, servicePrice, serviceTakingDate, message, status }
         try {
             const res = await axios.post("http://localhost:5000/api/v1/booking", bookingData)
             if (res.status === 201) {
