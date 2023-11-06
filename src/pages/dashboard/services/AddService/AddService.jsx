@@ -29,7 +29,7 @@ const AddService = () => {
         } catch (error) {
             console.error("Error while posting data:", error);
         }
-
+        form.reset()
     };
 
     return (

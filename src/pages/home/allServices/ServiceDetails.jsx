@@ -28,12 +28,11 @@ const ServiceDetails = () => {
             <div className="bg-blue-100 dark:bg-blue-200   h-36 w-full flex justify-center items-center">
                 <h1 className="lg:text-4xl text-2xl text-blue-400 dark:text-blue-600 font-bold">Service Details</h1>
             </div>
-            <div className="max-full mt-10 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="w-1/4  mt-10 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <img className="rounded-full mx-auto w-14" src={serviceProviderImage} alt={serviceProviderName} />
                 <Link>
                     <h5 className="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{serviceProviderName}</h5>
                 </Link>
-                <p className="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Follow this step-by-step guideline <br /> on how to certify for your weekly benefits:</p>
                 <div className="flex justify-center items-center gap-2">
                     <IoLocationOutline className=" text-gray-800 dark:text-white text-lg mb-3" />
                     <p className="mb-3  font-normal text-blue-400">{serviceProviderLocation}</p>
@@ -131,38 +130,40 @@ const ServiceDetails = () => {
             {/* modal code end */}
 
 
-            <div className="mt-10 max-w-4xl  ">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                    {
-                        anotherServices?.map(service => {
-                            const { serviceImage, serviceName, servicePrice, serviceProviderImage, serviceProviderName, _id } = service || {}
-                            return <div key={_id} className="details">
-                                <div className="flex flex-col sm:flex-row lg:flex-col  cursor-pointer  bg-white border border-gray-200 rounded-lg shadow   hover:bg-gray-100 relative dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <img className="object-cover w-full lg:w-full sm:w-60 rounded-t-lg  h-full md:h-auto  md:rounded-none md:rounded-l-lg" src={serviceImage} />
-                                    <div className=" overlay w-full lg:w-full rounded-bl-md hidden sm:block md:w-60 rounded-t-lg h-96  object-cover sm:h-[14.3rem] lg:h-[18.3rem] absolute ">
-                                    </div>
-                                    <div className="flex flex-col justify-between p-4 leading-normal">
-                                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{serviceName}</h5>
-                                        <h1 className="lg:text-xl text-[#ff976a] font-bold text-sm">${servicePrice} <span className="text-gray-500"> / </span> <span className="lg:text-sm text-xs text-gray-500 ">Per Person</span> </h1>
-                                        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                                        <div className="flex items-center mb-3 ">
-                                            <div className="flex items-center gap-2">
-                                                <img className="w-6 rounded-full" src={serviceProviderImage} alt={serviceProviderName} />
-                                                <h2 className="dark:text-gray-400 text-sm">{serviceProviderName}</h2>
-                                            </div>
+            <div className="">
+                <div className="mt-10 max-w-4xl   ">
+                    <div className="grid grid-cols-1 lg:grid-cols-3   gap-4">
+                        {
+                            anotherServices?.map(service => {
+                                const { serviceImage, serviceName, servicePrice, serviceProviderImage, serviceProviderName, _id } = service || {}
+                                return <div key={_id} className="details">
+                                    <div className="flex flex-col sm:flex-row lg:flex-col  cursor-pointer  bg-white border border-gray-200 rounded-lg shadow   hover:bg-gray-100 relative dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <img className="object-cover w-full lg:w-full sm:w-60 rounded-t-lg  h-full md:h-auto  md:rounded-none md:rounded-l-lg" src={serviceImage} />
+                                        <div className=" overlay w-full lg:w-full rounded-bl-md hidden sm:block md:w-60 rounded-t-lg h-96  object-cover sm:h-[14.3rem] lg:h-[12rem] absolute ">
                                         </div>
+                                        <div className="flex flex-col justify-between p-4 leading-normal">
+                                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{serviceName}</h5>
+                                            <h1 className="lg:text-xl text-[#ff976a] font-bold text-sm">${servicePrice} <span className="text-gray-500"> / </span> <span className="lg:text-sm text-xs text-gray-500 ">Per Person</span> </h1>
+                                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                                            <div className="flex items-center mb-3 ">
+                                                <div className="flex items-center gap-2">
+                                                    <img className="w-6 rounded-full" src={serviceProviderImage} alt={serviceProviderName} />
+                                                    <h2 className="dark:text-gray-400 text-sm">{serviceProviderName}</h2>
+                                                </div>
+                                            </div>
 
-                                        <Link to={`/service-details/${_id}`}
-                                            className="text-white rounded-md    bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm px-5 py-2.5 text-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                        >
-                                            View Details
-                                        </Link>
+                                            <Link to={`/service-details/${_id}`}
+                                                className="text-white rounded-md    bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm px-5 py-2.5 text-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            >
+                                                View Details
+                                            </Link>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </div>
-                        })
-                    }
+                                </div>
+                            })
+                        }
+                    </div>
                 </div>
             </div>
 
