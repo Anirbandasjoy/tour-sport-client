@@ -12,6 +12,7 @@ import ManageServices from "../pages/manageService/ManageServices";
 import UpdateService from "../pages/manageService/UpdateService";
 import ErrorPage from "../pages/error/ErrorPage";
 import MyServices from "../pages/dashboard/services/myservice/MyServices";
+import MyShedule from "../pages/dashboard/myShedule/MyShedule";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
             {
                 path: "my-services",
                 element: <MyServices />
+            },
+            {
+                path: "my-shedule",
+                element: <MyShedule />
             }
 
         ]

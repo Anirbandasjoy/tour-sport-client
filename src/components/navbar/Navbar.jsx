@@ -11,8 +11,6 @@ const Navbar = () => {
     const [dropdown, setDropdown] = useState(true);
     const [open, setOpen] = useState(false);
     const { handleModeChnage, mode } = useTheme()
-
-
     return (
         <div>
             <div className="h-[1px] w-full bg-slate-300 dark:bg-slate-400"></div>
@@ -31,10 +29,6 @@ const Navbar = () => {
                         }
                         {
                             mode === "light" ? <LuMoonStar onClick={handleModeChnage} size={22} className="cursor-pointer mr-2 lg:mr-0 dark:text-white" /> : <FiSun onClick={handleModeChnage} size={22} className="cursor-pointer mr-2 lg:mr-0 dark:text-white" />
-                        }
-
-                        {
-
                         }
 
                         {
@@ -57,7 +51,7 @@ const Navbar = () => {
                                     </li>
 
                                     <li>
-                                        <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                                        <Link to="/my-shedule" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
                                             <div className="inline-flex items-center">
 
                                                 My Schedule

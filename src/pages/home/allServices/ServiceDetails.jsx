@@ -3,6 +3,7 @@ import { IoLocationOutline } from "react-icons/io5"
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 import useFetch from "../../../hooks/useFetch";
+import axios from "axios";
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext)
     const { id } = useParams()
@@ -16,19 +17,35 @@ const ServiceDetails = () => {
         const remaining = data.filter((service) => service._id !== id)
         setAnotherServices(remaining)
     }, [data, id])
-
-    console.log(anotherServices)
-
-
-    const handleSubmit = (e) => {
+    const handleBookingSubmit = async (e) => {
         e.preventDefault()
+        const form = e.target;
+        const serviceProviderEmail = form.serviceProviderEmail.value;
+        const buyerEmail = form.yourEmail.value;
+        const serviceImage = form.serviceImageUrl.value;
+        const servicePrice = form.servicePrice.value;
+        const serviceTakingDate = form.serviceTakingDate.value;
+        const message = form.message.value;
+        const bookingData = { serviceProviderEmail, buyerEmail, serviceImage, servicePrice, serviceTakingDate, message }
+        try {
+            const res = await axios.post("http://localhost:5000/api/v1/booking", bookingData)
+            if (res.status === 201) {
+                if (res.data.insertedId) {
+                    alert("Booking Placed Successfully")
+                    console.log(res.data)
+                }
+            }
+        } catch (error) {
+            console.log(error)
+        }
+        form.reset()
     }
     return (
         <div className="pb-20">
             <div className="bg-blue-100 dark:bg-blue-200   h-36 w-full flex justify-center items-center">
                 <h1 className="lg:text-4xl text-2xl text-blue-400 dark:text-blue-600 font-bold">Service Details</h1>
             </div>
-            <div className="w-1/4  mt-10 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="lg:w-1/4 w-full sm:w-3/4   mt-10 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <img className="rounded-full mx-auto w-14" src={serviceProviderImage} alt={serviceProviderName} />
                 <Link>
                     <h5 className="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{serviceProviderName}</h5>
@@ -88,7 +105,7 @@ const ServiceDetails = () => {
                             </button>
                             <div className="px-6 py-6 lg:px-8">
                                 <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white text-center">Booking This Service </h3>
-                                <form className="space-y-6" onSubmit={handleSubmit}>
+                                <form className="space-y-6" onSubmit={handleBookingSubmit}>
                                     <div>
                                         <label htmlFor="serviceProviderEmail" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Provider Email</label>
                                         <input type="email" name="serviceProviderEmail" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required defaultValue={serviceProviderEmail} readOnly />
@@ -106,14 +123,14 @@ const ServiceDetails = () => {
                                         <input type="text" name="servicePrice" id="servicePrice" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required defaultValue={servicePrice} readOnly />
                                     </div>
                                     <div>
-                                        <label htmlFor="serviceTakingDate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Image Url</label>
+                                        <label htmlFor="serviceTakingDate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Service Taking Date</label>
                                         <input type="date" name="serviceTakingDate" id="serviceTakingDate" className="bg-gray-50 border border-gray-300 text-gray-900  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required placeholder="Service Taking Date" />
                                     </div>
 
                                     <div>
 
                                         <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
-                                        <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..." required></textarea>
+                                        <textarea id="message" name="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..." required></textarea>
 
                                     </div>
 
