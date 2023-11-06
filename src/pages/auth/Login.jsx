@@ -10,8 +10,10 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(true);
     const [loginError, setLoginError] = useState("");
     const { loginUser, googleLoginUser } = useContext(AuthContext);
+
     const navigate = useNavigate();
     const location = localStorage.getItem("location")
+
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -25,7 +27,9 @@ const Login = () => {
             ).required()
         }),
         onSubmit: (values) => {
+
             const { email, password } = values;
+
             loginUser(email, password)
                 .then((userCredential) => {
                     console.log(userCredential.user);
