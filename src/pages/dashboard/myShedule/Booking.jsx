@@ -2,20 +2,36 @@ import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Booking = () => {
     const { user } = useContext(AuthContext)
     const url = user?.email
         ? `http://localhost:5000/api/v1/bookings?email=${user.email}`
         : null;
-    const { data } = useFetch(url);
-    console.log(data)
+    const { data, setData } = useFetch(url);
+    const handleDeleteBooking = async (id, setData) => {
+        try {
+            const res = await axios.delete(`http://localhost:5000/api/v1/booking/${id}`)
+            if (res.status === 200) {
+                if (res.data.deletedCount > 0) {
+                    const remaining = data.filter(booking => booking._id !== id)
+                    setData(remaining)
+                    alert("Deleted Successfully")
+                    console.log(res.data)
+                }
+
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div>
             <div className="bg-blue-100 dark:bg-blue-200   h-36 w-full flex justify-center items-center">
                 {
-                    data.length ? <h1 className="lg:text-4xl text-2xl text-blue-400 dark:text-blue-600 font-bold">Your Shedule</h1> : ""
+                    data.length === 0 ? <h1 className="lg:text-4xl text-2xl text-blue-400 dark:text-blue-600 font-bold">Your Shedule</h1> : ""
                 }
             </div>
             <h1 className="dark:text-gray-200 text-2xl lg:text-4xl text-center py-14 text-gray-500">Your Booking </h1>
@@ -65,7 +81,7 @@ const Booking = () => {
                                         }
                                     </td>
                                     <td className="px-6 py-4 text-center">
-                                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
+                                        <Link onClick={() => handleDeleteBooking(booking?._id, setData)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
                                     </td>
                                 </tr>
                             })
