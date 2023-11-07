@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import { AuthContext } from '../../context/AuthProvider';
 import Lottie from 'lottie-react';
 import loginAnimation from '../../assets/animation/login.json'
+import toast from 'react-hot-toast';
 const Login = () => {
     const [showPassword, setShowPassword] = useState(true);
     const [loginError, setLoginError] = useState("");
@@ -34,7 +35,7 @@ const Login = () => {
             loginUser(email, password)
                 .then((userCredential) => {
                     console.log(userCredential.user);
-                    alert("Logged in Successfully!")
+                    toast.success("Logged in Successfully!")
                     navigate(location ? location : "/")
                 })
                 .catch((err) => {
@@ -49,7 +50,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLoginUser()
             .then(() => {
-                alert("Logged In Successfully")
+                toast.success("Logged In Successfully")
                 navigate(location ? location : "/")
             })
             .catch((err) => [

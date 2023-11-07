@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 import useFetch from "../../../hooks/useFetch";
 import axios from "axios";
+import toast from "react-hot-toast";
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext)
     const { id } = useParams()
@@ -34,7 +35,7 @@ const ServiceDetails = () => {
             const res = await axios.post("https://tour-sport-server.vercel.app/api/v1/booking", bookingData)
             if (res.status === 201) {
                 if (res.data.insertedId) {
-                    alert("Booking Placed Successfully")
+                    toast.success("Booking Placed Successfully")
                     console.log(res.data)
                 }
             }

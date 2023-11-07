@@ -1,5 +1,6 @@
 import axios from "axios";
 import PropTypes from "prop-types";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 const ManageService = ({ service, setData, data }) => {
     const { serviceImage, serviceName, servicePrice, serviceProviderImage, serviceProviderName, _id } = service || {};
@@ -10,7 +11,7 @@ const ManageService = ({ service, setData, data }) => {
             if (res.status === 200) {
                 const remainig = services.filter((service) => service._id !== id);
                 setData(remainig)
-                alert("Deleted Successfully")
+                toast.success("Deleted Successfully")
                 console.log(res.data)
             }
         } catch (error) {

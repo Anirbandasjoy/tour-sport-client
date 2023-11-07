@@ -3,6 +3,9 @@ import { AuthContext } from "../../../context/AuthProvider";
 import useFetch from "../../../hooks/useFetch";
 import Loading from "../../../components/Loading/Loading";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { MdOutlineSentimentDissatisfied } from "react-icons/md";
+
 
 const PendingWork = () => {
     const { user } = useContext(AuthContext);
@@ -21,7 +24,7 @@ const PendingWork = () => {
             .patch(`https://tour-sport-server.vercel.app/api/v1/status/${id}`, { status: e })
             .then((res) => {
                 if (res.status === 200) {
-                    alert("Status Update Successfully");
+                    toast.success("Status Update Successfully");
                     console.log(res.data);
                 }
             })
@@ -40,6 +43,12 @@ const PendingWork = () => {
 
     if (loading) {
         return <Loading />
+    }
+    if (data.length == 0) {
+        return <div className="flex flex-col items-center  mt-32 p-8 rounded-md ">
+            <MdOutlineSentimentDissatisfied size={80} className="text-red-500 animate-bounce" />
+            <p className="text-gray-600 text-lg mt-4 font-semibold">Oops!  not available. Pending Work</p>
+        </div>
     }
 
     return (

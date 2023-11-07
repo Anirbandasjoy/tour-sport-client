@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from "../../context/AuthProvider"
 import { useContext } from 'react'
 import profileImage from "../../assets/profile.png"
+import toast from 'react-hot-toast'
 const Header = () => {
     const navigate = useNavigate()
 
@@ -13,7 +14,7 @@ const Header = () => {
     const hanleLogOut = () => {
         logOut()
             .then(() => {
-                alert("Logged Out Successfully")
+                toast.success("Logged Out Successfully")
                 localStorage.removeItem("location")
                 navigate("/login")
 

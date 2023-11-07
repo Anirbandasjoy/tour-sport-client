@@ -5,12 +5,13 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import * as yup from 'yup';
 import { AuthContext } from '../../context/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import toast from 'react-hot-toast';
 const Register = () => {
     const [showPassword, setShowPassword] = useState(true);
     const [registerError, setRegisterError] = useState("");
     const navigate = useNavigate();
 
-    const { registerUser, googleLoginUser } = useContext(AuthContext)
+    const { registerUser, googleLoginUser, logOut } = useContext(AuthContext)
     const location = localStorage.getItem("location")
 
     const formik = useFormik({
@@ -44,13 +45,15 @@ const Register = () => {
                         shortDescription: "shortDescription",
                     })
                         .then(() => {
-                            console.log("updated profile")
                         })
                         .catch((err) => console.log(err.message))
 
-                    console.log(userCredetial.user)
-                    alert("Your Registation Successfully!")
-                    navigate(location ? location : "/")
+                    toast.success("Your Registation Successfully!")
+                    logOut()
+                        .then(() => {
+                            localStorage.removeItem("location")
+                            navigate("/login")
+                        })
 
                 })
                 .catch((err) => {
@@ -66,7 +69,7 @@ const Register = () => {
     const handleGoogleLogin = () => {
         googleLoginUser()
             .then(() => {
-                alert("Logged in Successfully!")
+                toast.success("Logged in Successfully!")
                 navigate(location ? location : "/")
             })
             .catch((err) => [

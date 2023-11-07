@@ -3,6 +3,7 @@ import MyService from "./MyService"
 import useFetch from "../../../../hooks/useFetch";
 import { AuthContext } from "../../../../context/AuthProvider";
 import Loading from "../../../../components/Loading/Loading";
+import DataNotAvailable from "../../../../components/dataNotAvilable/DataNotAvailable";
 const MyServices = () => {
     const { user } = useContext(AuthContext)
     const url = user?.email
@@ -11,6 +12,11 @@ const MyServices = () => {
     const { data, setData, loading } = useFetch(url);
     if (loading) {
         return <Loading />
+    }
+    if (data.length === 0) {
+        return <div className="flex h-screen justify-center items-center">
+            <DataNotAvailable />
+        </div>
     }
     return (
         <div>

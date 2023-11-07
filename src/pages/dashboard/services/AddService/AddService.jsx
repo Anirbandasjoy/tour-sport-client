@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthProvider";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddService = () => {
     const { user } = useContext(AuthContext)
@@ -22,7 +23,7 @@ const AddService = () => {
             const response = await axios.post("https://tour-sport-server.vercel.app/api/v1/service", serviceData);
             if (response.status === 201) {
                 console.log("Data posted successfully:", response.data);
-                alert("Added Successfully")
+                toast.success("Added Successfully")
             } else {
                 console.error("Server returned an error:", response.status);
             }
