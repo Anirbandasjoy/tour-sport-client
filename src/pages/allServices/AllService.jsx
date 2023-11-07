@@ -4,7 +4,7 @@ import Service from "../home/allServices/Service"
 import Loading from "../../components/Loading/Loading";
 const AllService = () => {
     const [search, setSearch] = useState("");
-    const url = `http://localhost:5000/api/v1/services?search=${search}`
+    const url = `https://tour-sport-server.vercel.app/api/v1/services?search=${search}`
     const { data, loading } = useFetch(url);
     return (
         <div>

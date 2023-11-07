@@ -6,7 +6,7 @@ const ManageService = ({ service, setData, data }) => {
     const services = data;
     const handleDelete = async (id, setData) => {
         try {
-            const res = await axios.delete(`http://localhost:5000/api/v1/service/${id}`)
+            const res = await axios.delete(`https://tour-sport-server.vercel.app/api/v1/service/${id}`)
             if (res.status === 200) {
                 const remainig = services.filter((service) => service._id !== id);
                 setData(remainig)

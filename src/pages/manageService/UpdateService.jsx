@@ -20,7 +20,7 @@ const UpdateService = () => {
         const serviceProviderImage = form.serviceProviderImage.value;
         const serviceData = { serviceProviderName, serviceProviderEmail, serviceProviderLocation, serviceName, servicePrice, serviceImage, serviceArea, serviceDsc, serviceProviderImage }
         try {
-            const response = await axios.put(`http://localhost:5000/api/v1/service/${data?._id}`, serviceData)
+            const response = await axios.put(`https://tour-sport-server.vercel.app/api/v1/service/${data?._id}`, serviceData)
             if (response.status === 200) {
                 alert("Updated Successfully")
                 console.log(response.data)

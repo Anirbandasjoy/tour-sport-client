@@ -27,6 +27,7 @@ const Login = () => {
             ).required()
         }),
         onSubmit: (values) => {
+            setLoginError("")
 
             const { email, password } = values;
 
@@ -87,7 +88,7 @@ const Login = () => {
                                 <input type={showPassword ? "password" : "text"} name="password" id="password" placeholder="your password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " onChange={formik.handleChange} value={formik.values.password} />
                                 <span onClick={() => setShowPassword(!showPassword)}>
                                     {
-                                        showPassword ? <AiOutlineEyeInvisible size={23} className='absolute right-4 bottom-2 cursor-pointer' /> : <AiOutlineEye size={23} className='absolute right-4 bottom-2 cursor-pointer' />
+                                        showPassword ? <AiOutlineEyeInvisible size={23} className='absolute  text-gray-600 right-4 bottom-2 cursor-pointer' /> : <AiOutlineEye size={23} className='absolute right-4 bottom-2 cursor-pointer text-gray-600 ' />
                                     }
                                 </span>
                             </div>

@@ -2,7 +2,7 @@ import axios from "axios"
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../context/AuthProvider"
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://tour-sport-server.vercel.app',
     withCredentials: true
 })
 const useAxios = () => {

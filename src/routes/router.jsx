@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
             {
                 path: "service-details/:id",
                 element: <PribetRoutes><ServiceDetails /></PribetRoutes>,
-                loader: ({ params }) => axios.get(`http://localhost:5000/api/v1/service/${params.id}`)
+                loader: ({ params }) => axios.get(`https://tour-sport-server.vercel.app/api/v1/service/${params.id}`)
 
             },
             {
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
             {
                 path: "update-service/:id",
                 element: <PribetRoutes><UpdateService /></PribetRoutes>,
-                loader: ({ params }) => axios.get(`http://localhost:5000/api/v1/service/${params.id}`)
+                loader: ({ params }) => axios.get(`https://tour-sport-server.vercel.app/api/v1/service/${params.id}`)
             },
             {
                 path: "/login",

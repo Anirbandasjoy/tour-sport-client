@@ -6,7 +6,7 @@ import Loading from "../../components/Loading/Loading"
 const ManageServices = () => {
     const { user } = useContext(AuthContext)
     const url = user?.email
-        ? `http://localhost:5000/api/v1/my-services?email=${user.email}`
+        ? `https://tour-sport-server.vercel.app/api/v1/my-services?email=${user.email}`
         : null;
 
     const { data, setData, loading } = useFetch(url);

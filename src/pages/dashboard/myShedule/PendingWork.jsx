@@ -7,7 +7,7 @@ import axios from "axios";
 const PendingWork = () => {
     const { user } = useContext(AuthContext);
     const url = user?.email
-        ? `http://localhost:5000/api/v1/provider/bookings?email=${user.email}`
+        ? `https://tour-sport-server.vercel.app/api/v1/provider/bookings?email=${user.email}`
         : null;
     const { data, loading } = useFetch(url);
 
@@ -20,7 +20,7 @@ const PendingWork = () => {
         }));
 
         axios
-            .patch(`http://localhost:5000/api/v1/status/${id}`, { status: e })
+            .patch(`https://tour-sport-server.vercel.app/api/v1/status/${id}`, { status: e })
             .then((res) => {
                 if (res.status === 200) {
                     alert("Status Update Successfully");
@@ -96,11 +96,11 @@ const PendingWork = () => {
                                                             value={statuses[booking._id] || "Pending"}
                                                             onChange={(e) => handleChange(e.target.value, booking._id)}
                                                             id="states"
-                                                            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 focus:ring-blue-500 focus:border-blue-500 block lg:w-2/4 w-full text-xs justify-end p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 focus:ring-blue-500 focus:border-blue-500 block lg:w-3/4 w-full text-xs justify-end p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                         >
                                                             <option value="Pending">Pending</option>
-                                                            <option value="Process">Process</option>
-                                                            <option value="Approved">Approved</option>
+                                                            <option value="In Progress">In Progress</option>
+                                                            <option value="Completed">Completed</option>
                                                         </select>
                                                     </td>
                                                 </tr>

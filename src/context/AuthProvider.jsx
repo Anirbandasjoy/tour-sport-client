@@ -39,11 +39,11 @@ const AuthProvider = ({ children }) => {
 
             if (currentUser) {
 
-                axios.post("http://localhost:5000/jwt", loggedUser, { withCredentials: true })
+                axios.post("https://tour-sport-server.vercel.app/jwt", loggedUser, { withCredentials: true })
                     .then(() => { });
             } else {
 
-                axios.post("http://localhost:5000/logOut", loggedUser, { withCredentials: true })
+                axios.post("https://tour-sport-server.vercel.app/logOut", loggedUser, { withCredentials: true })
                     .then(() => { });
             }
         });

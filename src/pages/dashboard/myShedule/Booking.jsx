@@ -7,12 +7,12 @@ import axios from "axios";
 const Booking = () => {
     const { user } = useContext(AuthContext)
     const url = user?.email
-        ? `http://localhost:5000/api/v1/buyer/bookings?email=${user.email}`
+        ? `https://tour-sport-server.vercel.app/api/v1/buyer/bookings?email=${user.email}`
         : null;
     const { data, setData } = useFetch(url);
     const handleDeleteBooking = async (id, setData) => {
         try {
-            const res = await axios.delete(`http://localhost:5000/api/v1/booking/${id}`)
+            const res = await axios.delete(`https://tour-sport-server.vercel.app/api/v1/booking/${id}`)
             if (res.status === 200) {
                 if (res.data.deletedCount > 0) {
                     const remaining = data.filter(booking => booking._id !== id)

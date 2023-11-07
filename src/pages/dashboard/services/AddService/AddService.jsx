@@ -19,7 +19,7 @@ const AddService = () => {
         const serviceData = { serviceProviderName, serviceProviderEmail, serviceProviderLocation, serviceName, servicePrice, serviceImage, serviceArea, serviceDsc, serviceProviderImage }
         console.log(serviceData)
         try {
-            const response = await axios.post("http://localhost:5000/api/v1/service", serviceData);
+            const response = await axios.post("https://tour-sport-server.vercel.app/api/v1/service", serviceData);
             if (response.status === 201) {
                 console.log("Data posted successfully:", response.data);
                 alert("Added Successfully")

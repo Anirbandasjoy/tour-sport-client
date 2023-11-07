@@ -10,7 +10,7 @@ const ServiceDetails = () => {
     const service = useLoaderData();
     const [open, setOpen] = useState(false)
     const { serviceProviderImage, serviceProviderName, serviceProviderLocation, serviceImage, serviceName, servicePrice, serviceProviderEmail } = service.data || {}
-    const url = `http://localhost:5000/api/v1/my-services?email=${serviceProviderEmail}&yourEmail=${user?.email}`;
+    const url = `https://tour-sport-server.vercel.app/api/v1/my-services?email=${serviceProviderEmail}&yourEmail=${user?.email}`;
 
     const { data } = useFetch(url);
     const [anotherServices, setAnotherServices] = useState(data)
@@ -31,7 +31,7 @@ const ServiceDetails = () => {
         const status = "Pending"
         const bookingData = { serviceProviderEmail, buyerEmail, serviceName, serviceImage, servicePrice, serviceTakingDate, message, status }
         try {
-            const res = await axios.post("http://localhost:5000/api/v1/booking", bookingData)
+            const res = await axios.post("https://tour-sport-server.vercel.app/api/v1/booking", bookingData)
             if (res.status === 201) {
                 if (res.data.insertedId) {
                     alert("Booking Placed Successfully")
@@ -49,13 +49,13 @@ const ServiceDetails = () => {
                 <h1 className="lg:text-4xl text-2xl text-blue-400 dark:text-blue-600 font-bold">Service Details</h1>
             </div>
             <div className="lg:w-1/4 w-full sm:w-3/4   mt-10 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img className="rounded-full mx-auto w-14" src={serviceProviderImage} alt={serviceProviderName} />
+                <img className="rounded-full mx-auto mb-2 w-14" src={serviceProviderImage} alt={serviceProviderName} />
                 <Link>
-                    <h5 className="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{serviceProviderName}</h5>
+                    <h5 className="mb-2 text-center text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{serviceProviderName}</h5>
                 </Link>
-                <div className="flex justify-center items-center gap-2">
+                <div className="flex justify-center items-center gap-1">
                     <IoLocationOutline className=" text-gray-800 dark:text-white text-lg mb-3" />
-                    <p className="mb-3  font-normal text-blue-400">{serviceProviderLocation}</p>
+                    <p className="mb-3  font-normal uppercase text-blue-400">{serviceProviderLocation}</p>
                 </div>
             </div>
 
@@ -66,12 +66,12 @@ const ServiceDetails = () => {
                     {/* <div className=" overlay w-full hidden sm:block md:w-60 rounded-t-lg h-96  object-cover  md:h-full absolute ">
                     </div> */}
                     <div className="flex flex-1 flex-col justify-between p-4 leading-normal">
-                        <div>
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{serviceName}</h5>
-                            <h1 className="lg:text-xl text-[#ff976a] font-bold text-sm">${servicePrice} <span className="text-gray-500"> / </span> <span className="lg:text-sm text-xs text-gray-500 ">Per Person</span> </h1>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                        <div className="lg:space-y-5 space-y-3">
+                            <h5 className="mb-2 lg:text-5xl text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{serviceName}</h5>
+                            <h1 className="lg:text-3xl text-[#ff976a] font-bold text-xl">${servicePrice} <span className="text-gray-500"> / </span> <span className="lg:text-sm text-xs text-gray-500 ">Per Person</span> </h1>
+                            <p className="mb-3 font-normal lg:text-lg text-sm  text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
                             <div className="flex items-center mb-3 ">
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-2 mb-3 sm:mb-0">
                                     <img className="w-6 rounded-full" src={serviceProviderImage} alt={serviceProviderName} />
                                     <h2 className="dark:text-gray-400 text-sm">{serviceProviderName}</h2>
                                 </div>
@@ -163,8 +163,8 @@ const ServiceDetails = () => {
                                 return <div key={_id} className="details">
                                     <div className="flex flex-col sm:flex-row lg:flex-col  cursor-pointer  bg-white border border-gray-200 rounded-lg shadow   hover:bg-gray-100 relative dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <img className="object-cover w-full lg:w-full sm:w-60 rounded-t-lg  h-full md:h-auto  md:rounded-none md:rounded-l-lg" src={serviceImage} />
-                                        <div className=" overlay w-full lg:w-full rounded-bl-md hidden sm:block md:w-60 rounded-t-lg h-96  object-cover sm:h-[14.3rem] lg:h-[12rem] absolute ">
-                                        </div>
+                                        {/* <div className=" overlay w-full lg:w-full rounded-bl-md hidden sm:block md:w-60 rounded-t-lg h-96  object-cover sm:h-[14.3rem] lg:h-[12rem] absolute ">
+                                        </div> */}
                                         <div className="flex flex-col justify-between p-4 leading-normal">
                                             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{serviceName}</h5>
                                             <h1 className="lg:text-xl text-[#ff976a] font-bold text-sm">${servicePrice} <span className="text-gray-500"> / </span> <span className="lg:text-sm text-xs text-gray-500 ">Per Person</span> </h1>

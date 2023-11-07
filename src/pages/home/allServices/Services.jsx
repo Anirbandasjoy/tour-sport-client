@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch"
 import Service from "./Service";
 import Loading from "../../../components/Loading/Loading";
-const url = "http://localhost:5000/api/v1/services"
+const url = "https://tour-sport-server.vercel.app/api/v1/services"
 const Services = () => {
     const { data, loading } = useFetch(url);
     if (loading) {
