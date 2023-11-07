@@ -56,11 +56,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "my-services",
-                element: <MyServices />
+                element: <PribetRoutes><MyServices /></PribetRoutes>
             },
             {
                 path: "my-shedule",
-                element: <MyShedule />
+                element: <PribetRoutes><MyShedule /></PribetRoutes>
             }
 
         ]

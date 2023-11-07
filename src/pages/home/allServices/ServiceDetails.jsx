@@ -10,13 +10,14 @@ const ServiceDetails = () => {
     const service = useLoaderData();
     const [open, setOpen] = useState(false)
     const { serviceProviderImage, serviceProviderName, serviceProviderLocation, serviceImage, serviceName, servicePrice, serviceProviderEmail } = service.data || {}
-    const url = `http://localhost:5000/api/v1/my-services?email=${serviceProviderEmail}`
+    const url = `http://localhost:5000/api/v1/my-services?email=${serviceProviderEmail}&yourEmail=${user?.email}`;
+
     const { data } = useFetch(url);
     const [anotherServices, setAnotherServices] = useState(data)
     useEffect(() => {
         const remaining = data.filter((service) => service._id !== id)
         setAnotherServices(remaining)
-    }, [data, id])
+    }, [data, id, url])
     const handleBookingSubmit = async (e) => {
         e.preventDefault()
         const form = e.target;

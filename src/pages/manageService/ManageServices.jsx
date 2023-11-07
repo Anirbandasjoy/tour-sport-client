@@ -8,6 +8,7 @@ const ManageServices = () => {
     const url = user?.email
         ? `http://localhost:5000/api/v1/my-services?email=${user.email}`
         : null;
+
     const { data, setData, loading } = useFetch(url);
     if (loading) {
         return <Loading />

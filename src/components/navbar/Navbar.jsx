@@ -26,7 +26,7 @@ const Navbar = () => {
                             user ? <button onClick={() => setDropdown(!dropdown)} type="button" data-dropdown-toggle="language-dropdown-menu" className="inline-flex items-center font-medium w-32 justify-center px-4 py-2 sm:text-sm text-xs text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                                 <MdOutlineDashboardCustomize className="mr-1 " />
                                 Dashboard
-                            </button> : <div className="dark:bg-slate-900 w-[8.2rem] h-10"></div>
+                            </button> : <div className="dark:bg-slate-900 lg:w-[8.2rem] sm:w-[5rem] h-10"></div>
                         }
 
 

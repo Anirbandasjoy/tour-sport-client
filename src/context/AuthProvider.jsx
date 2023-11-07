@@ -36,13 +36,14 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
             console.log(currentUser);
+
             if (currentUser) {
-                console.log(loggedUser)
+
                 axios.post("http://localhost:5000/jwt", loggedUser, { withCredentials: true })
                     .then(() => { });
             } else {
 
-                axios.post("/http://localhost:5000/logout", loggedUser, { withCredentials: true })
+                axios.post("http://localhost:5000/logOut", loggedUser, { withCredentials: true })
                     .then(() => { });
             }
         });
