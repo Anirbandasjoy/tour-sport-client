@@ -13,12 +13,7 @@ const Booking = () => {
         ? `https://tour-sport-server.vercel.app/api/v1/buyer/bookings?email=${user.email}`
         : null;
     const { data, setData, loading } = useFetch(url);
-    if (data.length == 0) {
-        return <div className="flex flex-col items-center  mt-32 p-8 rounded-md ">
-            <MdOutlineSentimentDissatisfied size={80} className="text-red-500 animate-bounce" />
-            <p className="text-gray-600 text-lg mt-4 font-semibold">Oops!  not available. Your Booking</p>
-        </div>
-    }
+
     const handleDeleteBooking = async (id, setData) => {
         try {
             const res = await axios.delete(`https://tour-sport-server.vercel.app/api/v1/booking/${id}`)
@@ -46,8 +41,12 @@ const Booking = () => {
                 <h1 className="lg:text-4xl text-2xl text-blue-400 dark:text-blue-600 font-bold">Your Shedule</h1>
 
             </div>
+
             {
-                data.length ? <div>
+                data.length === 0 ? <div className="flex flex-col items-center  mt-32 p-8 rounded-md ">
+                    <MdOutlineSentimentDissatisfied size={80} className="text-red-500 animate-bounce" />
+                    <p className="text-gray-600 text-lg mt-4 font-semibold">Oops!  not available. Your Booking</p>
+                </div> : <div>
                     <h1 className="dark:text-gray-500 font-bold text-2xl lg:text-4xl text-center py-14 text-gray-500">Your Booking </h1>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full lg:w-3/4 mx-auto text-sm text-left text-gray-500 dark:text-gray-400">
@@ -103,9 +102,8 @@ const Booking = () => {
                             </tbody>
                         </table>
                     </div>
-                </div> : ""
+                </div>
             }
-
         </div>
     )
 }

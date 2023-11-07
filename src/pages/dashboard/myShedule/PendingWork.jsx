@@ -44,17 +44,15 @@ const PendingWork = () => {
     if (loading) {
         return <Loading />
     }
-    if (data.length == 0) {
-        return <div className="flex flex-col items-center  mt-32 p-8 rounded-md ">
-            <MdOutlineSentimentDissatisfied size={80} className="text-red-500 animate-bounce" />
-            <p className="text-gray-600 text-lg mt-4 font-semibold">Oops!  not available. Pending Work</p>
-        </div>
-    }
 
     return (
         <div className="mt-16">
-            {data.length ? (
-                <div>
+
+            {
+                data.length === 0 ? <div className="flex flex-col items-center  mt-32 p-8 rounded-md ">
+                    <MdOutlineSentimentDissatisfied size={80} className="text-red-500 animate-bounce" />
+                    <p className="text-gray-600 text-lg mt-4 font-semibold">Oops!  not available. Pending Work</p>
+                </div> : <div>
                     <h1 className="dark:text-gray-500 font-bold text-2xl lg:text-4xl text-center py-14 text-gray-500">
                         Your Pending Work
                     </h1>
@@ -118,7 +116,9 @@ const PendingWork = () => {
                     </div>
 
                 </div>
-            ) : ""}
+            }
+
+
         </div>
     );
 }
