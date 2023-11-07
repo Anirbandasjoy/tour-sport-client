@@ -18,7 +18,7 @@ const Navbar = () => {
                 <div className=" flex flex-wrap relative items-center justify-between mx-auto py-4">
                     <Link href="https://flowbite.com/" className="flex items-center">
                         <img src={logo} className="h-8 mr-1" alt="logo" />
-                        <span className="self-center lg:text-2xl text-sm sm:text-lg font-semibold whitespace-nowrap dark:text-white">CareerNest</span>
+                        <span className="self-center lg:text-2xl text-sm sm:text-lg font-semibold whitespace-nowrap dark:text-white">Tour Sport</span>
                     </Link>
                     <div className="flex items-center md:order-2 ">
 
@@ -89,7 +89,7 @@ const Navbar = () => {
 
                             }
                             <li>
-                                <NavLink to="/dfdf" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</NavLink>
+                                <a href="#contact" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
                             </li>
                         </ul>
                     </div>

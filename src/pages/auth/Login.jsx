@@ -7,6 +7,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import Lottie from 'lottie-react';
 import loginAnimation from '../../assets/animation/login.json'
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 const Login = () => {
     const [showPassword, setShowPassword] = useState(true);
     const [loginError, setLoginError] = useState("");
@@ -60,6 +61,9 @@ const Login = () => {
 
     return (
         <div className='  flex justify-center flex-col lg:flex-row items-center bg-base-300 dark:bg-gray-900 dark:text-white'>
+            <Helmet>
+                <title>Login | Tour sport</title>
+            </Helmet>
             <div className='flex-1 text-center  '>
                 <div className='w-3/4 mx-auto'>
                     <Lottie loop={true} animationData={loginAnimation} />

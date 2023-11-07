@@ -13,3 +13,6 @@
   opacity: 1;
   left: 0rem;
 }
+* {
+  scroll-behavior: smooth;
+}

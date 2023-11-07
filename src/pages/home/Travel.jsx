@@ -3,12 +3,33 @@ import image1 from "../../assets/image/1.jpg"
 import image2 from "../../assets/image/2.jpg"
 import image3 from "../../assets/image/3.jpg"
 import image4 from "../../assets/image/4.jpg"
+import { Typewriter } from "react-simple-typewriter"
+import { useState } from "react"
 const Travel = () => {
+    const [loopCount, setLoopCount] = useState(-1);
+
+    const handleLoopComplete = () => {
+
+        setLoopCount((prevLoopCount) => prevLoopCount + 1);
+    };
     return (
         <div className="mt-14">
             <div className="text-center space-y-6">
                 <h3 className="text-sm lg:text-lg text-[#808080] font-bold">TRAVIO SPECIALS</h3>
-                <h1 className="text-2xl lg:text-5xl dark:text-gray-400 text-[#172a47] font-bold">Why Travel with Tutive?</h1>
+                <h1 className="text-2xl lg:text-5xl dark:text-gray-400 text-[#172a47] font-bold">Why  <span style={{ color: 'red', fontWeight: 'bold' }}>
+
+                    <Typewriter
+                        words={['Travel with Tutive?']}
+                        loop={loopCount}
+                        cursor
+                        cursorStyle='❤️'
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                        onLoopComplete={handleLoopComplete}
+
+                    />
+                </span></h1>
             </div>
             <div className="mt-32">
                 <div className="grid grid-cols-1 text-[#061a3a] sm:grid-cols-2 gap-8 lg:grid-cols-4">

@@ -5,6 +5,7 @@ import { AuthContext } from "../../../context/AuthProvider";
 import useFetch from "../../../hooks/useFetch";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext)
     const { id } = useParams()
@@ -46,6 +47,9 @@ const ServiceDetails = () => {
     }
     return (
         <div className="pb-20">
+            <Helmet>
+                <title>Service-Details | Tour sport</title>
+            </Helmet>
             <div className="bg-blue-100 dark:bg-blue-200   h-36 w-full flex justify-center items-center">
                 <h1 className="lg:text-4xl text-2xl text-blue-400 dark:text-blue-600 font-bold">Service Details</h1>
             </div>

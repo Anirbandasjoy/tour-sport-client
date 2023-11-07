@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../../context/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const AddService = () => {
     const { user } = useContext(AuthContext)
@@ -35,6 +36,9 @@ const AddService = () => {
 
     return (
         <div className="max-w-7xl mx-auto pb-8 bg-slate-200 dark:bg-slate-900 lg:px-20">
+            <Helmet>
+                <title>Dashboard-AddService| Tour sport</title>
+            </Helmet>
             <div className="h-[1px] w-full lg:w-3/5 mx-auto bg-slate-200 dark:bg-slate-400 mb-3"></div>
             <form onSubmit={handleSubmit}>
                 <div className="grid gap-6  mb-6 md:grid-cols-2">

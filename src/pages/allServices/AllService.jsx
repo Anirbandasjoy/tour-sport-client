@@ -2,20 +2,26 @@ import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import Service from "../home/allServices/Service"
 import Loading from "../../components/Loading/Loading";
+import { Helmet } from "react-helmet";
 const AllService = () => {
+
     const [search, setSearch] = useState("");
     const url = `https://tour-sport-server.vercel.app/api/v1/services?search=${search}`
     const { data, loading } = useFetch(url);
     return (
-        <div>
+
+        <div className="pb-32">
+            <Helmet>
+                <title>All Services | Tour sport</title>
+            </Helmet>
             <div className="bg-blue-100 dark:bg-blue-200   h-36 w-full flex justify-center items-center">
                 <h1 className="lg:text-4xl text-2xl text-blue-400 dark:text-blue-600 font-bold">All Services</h1>
             </div>
-            <div className="max-w-6xl mx-auto pb-10">
-                <div className="lg:my-24 my-14 text-center space-y-6 ">
+            <div className="max-w-6xl mx-auto mt-20 pb-10">
+                {/* <div className="lg:my-24 my-14 text-center space-y-6 ">
                     <h4 className="text-[#808080] lg:text-[1rem] text-xs sm:text-sm  uppercase font-bold ">MODERN & BEAUTIFUL</h4>
                     <h1 className="text-[#061a3a] dark:text-gray-400 lg:text-4xl text-xl sm:text-2xl font-bold ">Our Most Popular Adventures</h1>
-                </div>
+                </div> */}
 
                 <div className="mb-6 lg:w-1/4 w-2/4">
 

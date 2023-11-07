@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import { AuthContext } from '../../context/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 const Register = () => {
     const [showPassword, setShowPassword] = useState(true);
     const [registerError, setRegisterError] = useState("");
@@ -78,6 +79,9 @@ const Register = () => {
 
     return (
         <div className='max-w-6xl mx-auto bg-base-300'>
+            <Helmet>
+                <title>Registation | Tour sport</title>
+            </Helmet>
             <div className='flex  justify-center h-screen items-center  px-4 md:px-0'>
                 <div className="w-full max-w-lg  p-4  rounded-md  sm:p-6 md:p-8 ">
                     <form className="space-y-4 " onSubmit={formik.handleSubmit}>

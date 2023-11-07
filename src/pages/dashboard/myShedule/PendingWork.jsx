@@ -5,6 +5,7 @@ import Loading from "../../../components/Loading/Loading";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { MdOutlineSentimentDissatisfied } from "react-icons/md";
+import { Typewriter } from "react-simple-typewriter";
 
 
 const PendingWork = () => {
@@ -32,6 +33,12 @@ const PendingWork = () => {
                 console.log(err);
             });
     }
+    const [loopCount, setLoopCount] = useState(-1);
+
+    const handleLoopComplete = () => {
+
+        setLoopCount((prevLoopCount) => prevLoopCount + 1);
+    };
 
     useEffect(() => {
         const initialStatuses = {};
@@ -54,7 +61,20 @@ const PendingWork = () => {
                     <p className="text-gray-600 text-lg mt-4 font-semibold">Oops!  not available. Pending Work</p>
                 </div> : <div>
                     <h1 className="dark:text-gray-500 font-bold text-2xl lg:text-4xl text-center py-14 text-gray-500">
-                        Your Pending Work
+                        Your
+                        <span style={{ color: 'red', fontWeight: 'bold' }}>
+                            <Typewriter
+                                words={[' Pending Work']}
+                                loop={loopCount}
+                                cursor
+                                cursorStyle='❤️'
+                                typeSpeed={70}
+                                deleteSpeed={50}
+                                delaySpeed={1000}
+                                onLoopComplete={handleLoopComplete}
+
+                            />
+                        </span>
                     </h1>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full lg:w-3/4 mx-auto text-sm text-left text-gray-500 dark:text-gray-400">
