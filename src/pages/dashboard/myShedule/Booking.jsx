@@ -3,13 +3,14 @@ import { AuthContext } from "../../../context/AuthProvider";
 import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Loading from "../../../components/Loading/Loading";
 
 const Booking = () => {
     const { user } = useContext(AuthContext)
     const url = user?.email
         ? `https://tour-sport-server.vercel.app/api/v1/buyer/bookings?email=${user.email}`
         : null;
-    const { data, setData } = useFetch(url);
+    const { data, setData, loading } = useFetch(url);
     const handleDeleteBooking = async (id, setData) => {
         try {
             const res = await axios.delete(`https://tour-sport-server.vercel.app/api/v1/booking/${id}`)
@@ -25,6 +26,10 @@ const Booking = () => {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    if (loading) {
+        return <Loading />
     }
 
     return (
