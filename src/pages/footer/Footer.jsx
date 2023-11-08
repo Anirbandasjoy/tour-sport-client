@@ -31,7 +31,7 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <Link className="hover:underline">
-                                        Tailwind CSS
+                                        Spaical Tour
                                     </Link>
                                 </li>
                             </ul>

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 const MyService = ({ service }) => {
-    const { serviceImage, serviceName, servicePrice, serviceProviderImage, serviceProviderName } = service || {};
+    const { serviceImage, serviceName, servicePrice, serviceDsc, serviceProviderImage, serviceProviderName } = service || {};
 
     return (
         <div className="details">
@@ -11,7 +11,7 @@ const MyService = ({ service }) => {
                 <div className="flex flex-col flex-1 justify-between p-4 leading-normal">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{serviceName}</h5>
                     <h1 className="lg:text-xl text-[#ff976a] font-bold text-sm">${servicePrice} <span className="text-gray-500"> / </span> <span className="lg:text-sm text-xs text-gray-500 ">Per Person</span> </h1>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{serviceDsc.slice(0, 80)}</p>
                     <div className="flex items-center mb-3 ">
                         <div className="flex items-center gap-2">
                             <img className="w-6 rounded-full" src={serviceProviderImage} alt={serviceProviderName} />

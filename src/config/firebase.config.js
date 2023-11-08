@@ -1,12 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+const all = import.meta.env;
 const firebaseConfig = {
-  apiKey: "AIzaSyD6jIm4WQOZxplSrK5Foq2y4NaEJ7agsBs",
-  authDomain: "tour-sport.firebaseapp.com",
-  projectId: "tour-sport",
-  storageBucket: "tour-sport.appspot.com",
-  messagingSenderId: "1098957911502",
-  appId: "1:1098957911502:web:e4969173299ffadf68a79f",
+  apiKey: all.VITE_apiKey,
+  authDomain: all.VITE_authDomain,
+  projectId: all.VITE_projectId,
+  storageBucket: all.VITE_storageBucket,
+  messagingSenderId: all.VITE_messagingSenderId,
+  appId: all.VITE_appId,
 };
 
 const app = initializeApp(firebaseConfig);

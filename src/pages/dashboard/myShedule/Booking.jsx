@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
@@ -6,8 +6,15 @@ import axios from "axios";
 import Loading from "../../../components/Loading/Loading";
 import toast from "react-hot-toast";
 import { MdOutlineSentimentDissatisfied } from "react-icons/md";
+import { Typewriter } from "react-simple-typewriter";
 
 const Booking = () => {
+    const [loopCount, setLoopCount] = useState(-1);
+
+    const handleLoopComplete = () => {
+
+        setLoopCount((prevLoopCount) => prevLoopCount + 1);
+    };
     const { user } = useContext(AuthContext)
     const url = user?.email
         ? `https://tour-sport-server.vercel.app/api/v1/buyer/bookings?email=${user.email}`
@@ -47,7 +54,19 @@ const Booking = () => {
                     <MdOutlineSentimentDissatisfied size={80} className="text-red-500 animate-bounce" />
                     <p className="text-gray-600 text-lg mt-4 font-semibold">Oops!  not available. Your Booking</p>
                 </div> : <div>
-                    <h1 className="dark:text-gray-500 font-bold text-2xl lg:text-4xl text-center py-14 text-gray-500">Your Booking </h1>
+                    <h1 className="dark:text-gray-500 font-bold text-2xl lg:text-4xl text-center py-14 text-gray-500">Your<span style={{ color: 'red', fontWeight: 'bold' }}>
+                        <Typewriter
+                            words={[' Booking']}
+                            loop={loopCount}
+                            cursor
+                            cursorStyle='❤️'
+                            typeSpeed={70}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+                            onLoopComplete={handleLoopComplete}
+
+                        />
+                    </span> </h1>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full lg:w-3/4 mx-auto text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

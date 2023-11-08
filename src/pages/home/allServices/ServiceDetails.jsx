@@ -11,7 +11,7 @@ const ServiceDetails = () => {
     const { id } = useParams()
     const service = useLoaderData();
     const [open, setOpen] = useState(false)
-    const { serviceProviderImage, serviceProviderName, serviceProviderLocation, serviceImage, serviceName, servicePrice, serviceProviderEmail } = service.data || {}
+    const { serviceProviderImage, serviceProviderName, serviceProviderLocation, serviceImage, serviceName, servicePrice, serviceProviderEmail, serviceDsc } = service.data || {}
     const url = `https://tour-sport-server.vercel.app/api/v1/my-services?email=${serviceProviderEmail}&yourEmail=${user?.email}`;
 
     const { data } = useFetch(url);
@@ -74,7 +74,7 @@ const ServiceDetails = () => {
                         <div className="lg:space-y-5 space-y-3">
                             <h5 className="mb-2 lg:text-5xl text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{serviceName}</h5>
                             <h1 className="lg:text-3xl text-[#ff976a] font-bold text-xl">${servicePrice} <span className="text-gray-500"> / </span> <span className="lg:text-sm text-xs text-gray-500 ">Per Person</span> </h1>
-                            <p className="mb-3 font-normal lg:text-lg text-sm  text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                            <p className="mb-3 font-normal lg:text-lg text-sm  text-gray-700 dark:text-gray-400">{serviceDsc}</p>
                             <div className="flex items-center mb-3 ">
                                 <div className="flex items-center gap-2 mb-3 sm:mb-0">
                                     <img className="w-6 rounded-full" src={serviceProviderImage} alt={serviceProviderName} />
